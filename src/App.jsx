@@ -13,8 +13,16 @@ function App() {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e);
-    
+    const todoText = e.target.todo.value.trim();
+    if (todoText) {
+      const newTodo = {
+        id: todos.length ? Math.max(...todos.map(t => t.id)) + 1 : 1,
+        text: todoText,
+        completed: false
+      };
+      setTodos([...todos, newTodo]);
+      e.target.reset();
+    }
   }
 
 
